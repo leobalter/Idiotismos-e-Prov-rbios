@@ -35,6 +35,10 @@ class Frase(models.Model):
 
     def save(self, *args, **kwargs):
         translate = GoogleApi()
-        self.api_original = translate.getTranslated( query = self.original, lang='original' )
-        self.api_translated = translate.getTranslated( query = self.translated, lang='translated' )
+        if self.api_original == "":
+            self.api_original = translate.getTranslated( query = self.original, lang='original' )
+
+        if self.api_translated == "":
+            self.api_translated = translate.getTranslated( query = self.translated, lang='translated' )
+            
         super(Frase, self).save(*args, **kwargs) # Call the "real" save() method.

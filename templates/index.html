@@ -42,14 +42,20 @@
             <section id="fromServer" data-id="{{ frase.id }}">
                 <h3>A frase:</h3>
                 <p class="phrase original">{{ frase.original }}</p>
-                <p><a href="#" id="callOriginal" data-call="translated1">Google Translate para a frase original</a></p>
+                <!--<p><a href="#" id="callOriginal" data-call="translated1">Google Translate para a frase original</a></p>-->
                 
                 <h3>A tradução:</h3>
                 <p class="phrase translated">{{ frase.translated }}</p>
-                <p><a href="#" id="callTrans" data-call="translated2">Google Translate para a frase (mal) traduzida</a></p>                
+                <!--<p><a href="#" id="callTrans" data-call="translated2">Google Translate para a frase (mal) traduzida</a></p>-->
             </section>
                        
-            <section id="fromAPI"></section>
+            <section id="fromAPI">
+                <h3>A frase original via Google Translate:</h3>
+                <p>{{ frase.api_original }}</p>
+                
+                <h3>A frase em inglês de volta ao português via Google Translate:</h3>
+                <p>{{ frase.api_translated }}</p>
+            </section>
         {% endblock %}
     </div>
     

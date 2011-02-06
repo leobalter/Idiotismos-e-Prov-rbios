@@ -1,0 +1,120 @@
+{% load static %}
+{% get_static_prefix as STATIC_URL %}
+<!doctype html>  
+
+<!--[if lt IE 7 ]> <html lang="pt-br" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="pt-br" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="pt-br" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="pt-br" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Idiotismos e Provérbios</title>
+  <meta name="description" content="um projeto sobre idiomas com algumas traduções não muito usuais">
+  <meta name="author" content="Leo Balter">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <link href="http://fonts.googleapis.com/css?family=Droid+Sans:regular,bold" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css?v=2">
+  <script src="{{ STATIC_URL }}js/libs/modernizr-1.6.min.js"></script>
+
+</head>
+
+<body>
+
+  <div id="container">
+    <header>
+        {% block header %}
+            <h1>Idiotismos e Provérbios</h1>
+			<p class="description">um projeto sobre idiomas com algumas traduções não muito usuais</p>
+        {% endblock %}
+    </header>
+    
+    <div id="main" class="main">
+        {% block main %}
+            <h2>{{ frase.grupo }}</h2>
+
+            <section class="fromServer">
+                <h3>A frase:</h3>
+                <p class="phrase original">{{ frase.original }}</p>
+                
+                <h3>A tradução:</h3>
+                <p class="phrase translated">{{ frase.translated }}</p>
+            </section>
+            
+            <section class="fromAPI">
+                
+            </section>
+        {% endblock %}
+    </div>
+    
+    {% block footer %}
+	    <footer class="main">
+	        <section id="about">
+	            <h2>O que é tudo isso?</h2>
+	            <p>Esse site traz aleatóriamente algumas frases do livro "<a href="http://pt.wikipedia.org/wiki/English_As_She_Is_Spoke" rel="nofollow" title="Wikipedia sobre o livro 'English as she is spoke'">English as she is Spoke</a>" de domínio público. Divirta-se.</p>
+	            <p>Divertidamente criado em Django</p>
+	        </section>
+	        <h2>The land is create for:</h2>
+			<section class="hCard" 
+				itemtype="http://microformats.org/profile/hcard" itemscope>
+				<h3 itemprop="fn">Leonardo Balter</h3>
+				<p itemprop="title">Desenvolvedor Web</p>
+				<p itemprop="email">leo@balter.com.br<p>
+				<div itemprop="adr" itemscope>
+					<p itemprop="locality">Rio de Janeiro</p>
+				</div>
+				<h4>Pela web:</h4>
+				<ul class="linear clearfix">
+					<li><a href="http://www.iloop.com.br/" itemprop="url">site</a></li>
+					<li><a href="http://leobalter.net" itemprop="url">blog técnico</a></li>
+					<li><a href="http://www.desconferencia.com.br" itemprop="url">blog de idéias</a></li>
+					<li><a href="http://twitter.com/leobalter" itemprop="url">twitter</a></li>
+					<li><a href="http://facebook.com/leonardo.balter" itemprop="url">facebook</a></li>
+				</ul>	
+			</section>
+	    </footer>
+	{% endblock %}
+  </div> <!-- end of #container -->
+
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="{{ STATIC_URL }}js/libs/jquery-1.4.2.js"%3E%3C/script%3E'))</script>
+  
+  
+  <!-- scripts concatenated and minified via ant build script-->
+  <script src="{{ STATIC_URL }}js/plugins.js"></script>
+  <script src="{{ STATIC_URL }}js/script.js"></script>
+  <!-- end concatenated and minified scripts-->
+  
+  
+  <!--[if lt IE 7 ]>
+    <script src="{{ STATIC_URL }}js/libs/dd_belatedpng.js"></script>
+    <script> DD_belatedPNG.fix('img, .png_bg'); </script>
+  <![endif]-->
+
+  <!-- yui profiler and profileviewer - remove for production -->
+  <script src="{{ STATIC_URL }}js/profiling/yahoo-profiling.min.js"></script>
+  <script src="{{ STATIC_URL }}js/profiling/config.js"></script>
+  <!-- end profiling code -->
+
+
+  <!-- change the UA-XXXXX-X to be your site's ID -->
+  <script>
+   var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
+   (function(d, t) {
+    var g = d.createElement(t),
+        s = d.getElementsByTagName(t)[0];
+    g.async = true;
+    g.src = ('https:' == location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g, s);
+   })(document, 'script');
+  </script>
+  
+</body>
+</html>

@@ -74,7 +74,9 @@ jQuery(function($) {
             } else {
                 trans1 = tTexts[calling];
                 $('body').append(trans1);
-            }  
+            }
+            
+            $(this).remove();
         }
     };
     

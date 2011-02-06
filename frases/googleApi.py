@@ -15,10 +15,12 @@ class GoogleApi:
             urlFull = self.url + self.key + self.lang2 + '&q='
 
         urlFinal = urlFull + query;
-
-        request = urllib2.Request(urlFinal, None, {'Referer': 'http://www.iloop.com.br'})
-        response = urllib2.urlopen(request)
-        results = simplejson.load(response)
         
-        if results['data']:
-            return results['data']['translations'][0]['translatedText']
+        request = urllib2.Request(urlFinal, None, {'Referer': 'http://www.iloop.com.br'})
+        try:
+            response = urllib2.urlopen(request)
+            results = simplejson.load(response)
+            if results['data']:
+                return results['data']['translations'][0]['translatedText']
+        except Exception:
+            return ''

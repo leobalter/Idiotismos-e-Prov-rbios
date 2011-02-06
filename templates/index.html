@@ -50,11 +50,19 @@
             </section>
                        
             <section id="fromAPI">
+                {% if frase.api_original %}
                 <h3>A frase original via Google Translate:</h3>
                 <p>{{ frase.api_original }}</p>
+                {% else %}
+                <p><a href="#" id="callOriginal">Ver a frase original via Google Translate</a></p>
+                {% endif %}
                 
+                {% if frase.api_translated %}               
                 <h3>A frase em inglês de volta ao português via Google Translate:</h3>
                 <p>{{ frase.api_translated }}</p>
+                {% else %}
+                <p><a href="#" id="callTrans">Ver a frase (mal) traduzida via Google Translate</a></p>
+                {% endif %}
             </section>
         {% endblock %}
     </div>

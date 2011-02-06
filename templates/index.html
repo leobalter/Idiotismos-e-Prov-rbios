@@ -39,17 +39,17 @@
         {% block main %}
             <h2>{{ frase.grupo }}</h2>
 
-            <section class="fromServer">
+            <section id="fromServer" data-id="{{ frase.id }}">
                 <h3>A frase:</h3>
                 <p class="phrase original">{{ frase.original }}</p>
+                <p><a href="#" id="callOriginal" data-call="translated1">Google Translate para a frase original</a></p>
                 
                 <h3>A tradução:</h3>
                 <p class="phrase translated">{{ frase.translated }}</p>
+                <p><a href="#" id="callTrans" data-call="translated2">Google Translate para a frase (mal) traduzida</a></p>                
             </section>
-            
-            <section class="fromAPI">
-                
-            </section>
+                       
+            <section id="fromAPI"></section>
         {% endblock %}
     </div>
     
@@ -71,7 +71,7 @@
 				</div>
 				<h4>Pela web:</h4>
 				<ul class="linear clearfix">
-					<li><a href="http://www.iloop.com.br/" itemprop="url">site</a></li>
+					<li><a href="http://www.iloop.com.br/" itemprop="url">esse site</a></li>
 					<li><a href="http://leobalter.net" itemprop="url">blog técnico</a></li>
 					<li><a href="http://www.desconferencia.com.br" itemprop="url">blog de idéias</a></li>
 					<li><a href="http://twitter.com/leobalter" itemprop="url">twitter</a></li>
@@ -86,35 +86,28 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
   <script>!window.jQuery && document.write(unescape('%3Cscript src="{{ STATIC_URL }}js/libs/jquery-1.4.2.js"%3E%3C/script%3E'))</script>
   
-  
-  <!-- scripts concatenated and minified via ant build script-->
   <script src="{{ STATIC_URL }}js/plugins.js"></script>
   <script src="{{ STATIC_URL }}js/script.js"></script>
-  <!-- end concatenated and minified scripts-->
-  
   
   <!--[if lt IE 7 ]>
     <script src="{{ STATIC_URL }}js/libs/dd_belatedpng.js"></script>
     <script> DD_belatedPNG.fix('img, .png_bg'); </script>
   <![endif]-->
 
-  <!-- yui profiler and profileviewer - remove for production -->
-  <script src="{{ STATIC_URL }}js/profiling/yahoo-profiling.min.js"></script>
-  <script src="{{ STATIC_URL }}js/profiling/config.js"></script>
-  <!-- end profiling code -->
+<script type="text/javascript">
 
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-21223812-1']);
+  _gaq.push(['_setDomainName', '.iloop.com.br']);
+  _gaq.push(['_trackPageview']);
 
-  <!-- change the UA-XXXXX-X to be your site's ID -->
-  <script>
-   var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
-   (function(d, t) {
-    var g = d.createElement(t),
-        s = d.getElementsByTagName(t)[0];
-    g.async = true;
-    g.src = ('https:' == location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    s.parentNode.insertBefore(g, s);
-   })(document, 'script');
-  </script>
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
   
 </body>
 </html>

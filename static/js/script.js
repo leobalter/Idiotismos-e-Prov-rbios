@@ -1,50 +1,85 @@
 jQuery(function($) {
     var $main = $('#main');
+    var $id = $main.find('#fromServer').data('id');
 
     tAPI = {
         key : "AIzaSyBxHfduvWTZZnNaoQgGLOi1K_ox3gTicOc",
         url : "https://www.googleapis.com/language/translate/v2?key=",
         original : {
-            txt : escape($main.find('.original').text()),
+            txt : ($main.find('.original').text()),
             src : "pt",
             tgt : "en",
             resp : function(response) {
-                tAPI.handleResponse(response, 'original');
+                tAPI.handleResponse(response, 'translated1');
             }
         },
         translated : {
-            txt : escape($main.find('.translated').text()),
+            txt : ($main.find('.translated').text()),
             src : "en",
             tgt : "pt",
             resp : function(response) {
-                tAPI.handleResponse(response, 'translated');
+                tAPI.handleResponse(response, 'translated2');
             }
         },
         handleResponse : function(response, place) {
             var titulo = '';
-            if (place == 'original') {
+            if (place == 'translated1') {
                 titulo = '<h3>A frase original via Google Translate:</h3>';
-            } else if (place == 'translated') {
+            } else if (place == 'translated2') {
                 titulo = '<h3>A frase em inglês de volta ao português via Google Translate:</h3>';
             }
             
-            $(titulo+'<p>'+response.data.translations[0].translatedText+'</p>')
-                .appendTo('.fromAPI');
+            var textofinal = titulo+'<p>'+response.data.translations[0].translatedText+'</p>';
+            
+            if (Modernizr.localstorage) {
+                localStorage[place+'-id'+$id] = textofinal;
+            }
+            
+            tTexts.appendTexto(textofinal);
         }
+
     };
     
-    var translate1 = '<script src="' + tAPI.url + tAPI.key + '&source='
+    tTexts = {
+        translateText : function (item) {
+            if (item == 'translated1') {
+                return '<script src="' + tAPI.url + tAPI.key + '&source='
                    + tAPI.original.src + '&target=' + tAPI.original.tgt
                    + '&callback=tAPI.original.resp&q=' 
                    + tAPI.original.txt + '"></script>';
-
-    var translate2 = '<script src="' + tAPI.url + tAPI.key + '&source='
+            } else if (item == 'translated2') {
+                return '<script src="' + tAPI.url + tAPI.key + '&source='
                    + tAPI.translated.src + '&target=' + tAPI.translated.tgt
                    + '&callback=tAPI.translated.resp&q=' 
                    + tAPI.translated.txt + '"></script>';
+            }
+        },
+        appendTexto : function(texto) {
+            $(texto).appendTo('#fromAPI');
+        },
+        makeTrans : function(e) {
+            e.preventDefault;
+            
+            var trans1 = '', calling = $(this).data('call');
+            
+            if (Modernizr.localstorage) {
+                trans1 = localStorage[calling+'-id'+$id];
+                
+                if ( trans1 && trans1 != 'undefined' ) {
+                    tTexts.appendTexto(trans1);
+                } else {
+                    trans1 = tTexts.translateText(calling);
+                    $('body').append(trans1);
+                }
+            } else {
+                trans1 = tTexts[calling];
+                $('body').append(trans1);
+            }  
+        }
+    };
     
-    $('body').append(translate1);
-    $('body').append(translate2);
+    $main.find('#callOriginal').one('click', tTexts.makeTrans);
+    $main.find('#callTrans').one('click', tTexts.makeTrans);
 });
 
 

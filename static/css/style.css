@@ -92,7 +92,7 @@ html {
 
 #container {
 	margin: 0px auto;
-	width: 900px;
+	width: 757px;
     font-family: 'Droid Sans', serif;
 }
 
@@ -100,14 +100,12 @@ html {
 	-webkit-box-shadow: #A9A8A8 0px 1px 3px;
 	box-shadow: #A9A8A8 0px 1px 3px;
 	background: white;
-	border-bottom-left-radius: 5px 5px;
-	border-bottom-right-radius: 5px 5px;
-	border-top-left-radius: 5px 5px;
-	border-top-right-radius: 5px 5px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
 	margin: 0px auto 20px;
 	padding: 25px 20px 15px;
 	position: relative;
-	width: 743px;
+	width: 648px;
 }
 
 header {
@@ -169,6 +167,16 @@ ul.linear li {
     margin-top: 12px;
 }
 
+#share ul {
+    list-style: none inside;
+    padding: 0;
+    margin: 16px 0 0;
+}
+
+#share li {
+    float:left;
+}
+
 @media all and (orientation:portrait) { 
   
 }
@@ -195,5 +203,7 @@ ul.linear li {
   @page { margin: 0.5cm; }
   p, h2, h3 { orphans: 3; widows: 3; }
   h2, h3{ page-break-after: avoid; }
+  
+  #share { display: none }
 }
 

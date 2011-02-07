@@ -18,6 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="/favicon.ico">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="caninocal" href="http://www.iloop.com.br">
 
   <link href="http://fonts.googleapis.com/css?family=Droid+Sans:regular,bold" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css?v=2">
@@ -64,6 +65,17 @@
                 <p><a href="#" id="callTrans" data-call="translated2">Ver a frase (mal) traduzida via Google Translate</a></p>
                 {% endif %}
             </section>
+            
+            <section id="share">
+                <ul class="clearfix">
+                    <li>
+                        <a href="http://twitter.com/share" class="twitter-share-button" data-text="{{ frase.translated }}" data-count="horizontal" data-via="idiotismos">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+                    </li>
+                    <li>
+                        <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="http://www.iloop.com.br" layout="button_count" show_faces="true" width="100"></fb:like>
+                    </li>
+                </ul>
+            </section>    
         {% endblock %}
     </div>
     
@@ -83,14 +95,16 @@
 				<div itemprop="adr" itemscope>
 					<p itemprop="locality">Rio de Janeiro</p>
 				</div>
-				<h4>Pela web:</h4>
-				<ul class="linear clearfix">
-					<li><a href="http://www.iloop.com.br/" itemprop="url">esse site</a></li>
-					<li><a href="http://leobalter.net" itemprop="url">blog técnico</a></li>
-					<li><a href="http://www.desconferencia.com.br" itemprop="url">blog de idéias</a></li>
-					<li><a href="http://twitter.com/leobalter" itemprop="url">twitter</a></li>
-					<li><a href="http://facebook.com/leonardo.balter" itemprop="url">facebook</a></li>
-				</ul>	
+				<nav>
+                    <h4>Pela web:</h4>
+                    <ul class="linear clearfix">
+                        <li><a href="http://www.iloop.com.br/" itemprop="url">esse site</a></li>
+                        <li><a href="http://leobalter.net" itemprop="url">blog técnico</a></li>
+                        <li><a href="http://www.desconferencia.com.br" itemprop="url">blog de idéias</a></li>
+                        <li><a href="http://twitter.com/leobalter" itemprop="url">twitter</a></li>
+                        <li><a href="http://facebook.com/leonardo.balter" itemprop="url">facebook</a></li>
+                    </ul>
+				</nav>
 			</section>
 	    </footer>
 	{% endblock %}

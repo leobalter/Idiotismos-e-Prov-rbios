@@ -44,10 +44,10 @@ jQuery(function($) {
         translateText : function (item) {
             if (item == 'translated1') {
                 return tAPI.url + tAPI.key + '&source=pt&target=en'
-                   + '&callback=tAPI.original.resp&q=' + escape(tAPI.original.txt);
+                   + '&callback=tAPI.original.resp&q=' + tAPI.original.txt;
             } else if (item == 'translated2') {
                 return tAPI.url + tAPI.key + '&source=en&target=pt'
-                   + '&callback=tAPI.translated.resp&q=' + escape(tAPI.translated.txt);
+                   + '&callback=tAPI.translated.resp&q=' + tAPI.translated.txt;
             }
         },
         appendTexto : function(texto) {

@@ -44,10 +44,10 @@ jQuery(function($) {
         translateText : function (item) {
             if (item == 'translated1') {
                 return tAPI.url + tAPI.key + '&source=pt&target=en'
-                   + '&callback=tAPI.original.resp&q=' + tAPI.original.txt;
+                   + '&callback=tAPI.original.resp&q=' + escape(tAPI.original.txt);
             } else if (item == 'translated2') {
                 return tAPI.url + tAPI.key + '&source=en&target=pt'
-                   + '&callback=tAPI.translated.resp&q=' + tAPI.translated.txt;
+                   + '&callback=tAPI.translated.resp&q=' + escape(tAPI.translated.txt);
             }
         },
         appendTexto : function(texto) {
@@ -64,14 +64,14 @@ jQuery(function($) {
                 if ( trans1 && trans1 != 'undefined' ) {
                     tTexts.appendTexto(trans1);
                 } else {
-                    trans1 = escape(tTexts.translateText(calling));
+                    trans1 = tTexts.translateText(calling);
                     //$(trans1).appendTo('#fromAPI');
 					var elemento = document.createElement('script');
 					elemento.src = trans1;
 					document.getElementsByTagName('head')[0].appendChild(elemento);
                 }
             } else {
-                trans1 = escape(tTexts.translateText(calling));
+                trans1 = tTexts.translateText(calling);
                 //$(trans1).appendTo('#fromAPI');
 				var elemento = document.createElement('script');
 				elemento.src = trans1;

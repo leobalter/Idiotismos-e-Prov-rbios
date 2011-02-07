@@ -3,7 +3,7 @@ jQuery(function($) {
     var $id = $main.find('#fromServer').data('id');
 
     tAPI = {
-        key : "AIzaSyBxHfduvWTZZnNaoQgGLOi1K_ox3gTicOc",
+        key : "AIzaSyDdYoOdqec4m4oYzp-oi3WjfOxhT09IGc0",
         url : "https://www.googleapis.com/language/translate/v2?key=",
         original : {
             txt : ($main.find('.original').text()),

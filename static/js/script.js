@@ -43,15 +43,11 @@ jQuery(function($) {
     tTexts = {
         translateText : function (item) {
             if (item == 'translated1') {
-                return '<script src="' + tAPI.url + tAPI.key + '&source='
-                   + tAPI.original.src + '&target=' + tAPI.original.tgt
-                   + '&callback=tAPI.original.resp&q=' 
-                   + tAPI.original.txt + '"></script>';
+                return tAPI.url + tAPI.key + '&source=pt&target=en'
+                   + '&callback=tAPI.original.resp&q=' + tAPI.original.txt;
             } else if (item == 'translated2') {
-                return '<script src="' + tAPI.url + tAPI.key + '&source='
-                   + tAPI.translated.src + '&target=' + tAPI.translated.tgt
-                   + '&callback=tAPI.translated.resp&q=' 
-                   + tAPI.translated.txt + '"></script>';
+                return tAPI.url + tAPI.key + '&source=en&target=pt'
+                   + '&callback=tAPI.translated.resp&q=' + tAPI.translated.txt;
             }
         },
         appendTexto : function(texto) {
@@ -69,13 +65,18 @@ jQuery(function($) {
                     tTexts.appendTexto(trans1);
                 } else {
                     trans1 = escape(tTexts.translateText(calling));
-                    $(trans1).appendTo('#fromAPI');
+                    //$(trans1).appendTo('#fromAPI');
+					var elemento = createElement('script');
+					elemento.src = trans1;
+					document.getElementsByTagName('head')[0].appendChild(elemento);
                 }
             } else {
                 trans1 = escape(tTexts.translateText(calling));
-                $(trans1).appendTo('#fromAPI');
+                //$(trans1).appendTo('#fromAPI');
+				var elemento = createElement('script');
+				elemento.src = trans1;
+				document.getElementsByTagName('head')[0].appendChild(elemento);
             }
-            
             $(this).remove();
         }
     };

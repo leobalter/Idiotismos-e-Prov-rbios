@@ -68,11 +68,11 @@ jQuery(function($) {
                 if ( trans1 && trans1 != 'undefined' ) {
                     tTexts.appendTexto(trans1);
                 } else {
-                    trans1 = tTexts.translateText(calling);
+                    trans1 = escape(tTexts.translateText(calling));
                     $(trans1).appendTo('#fromAPI');
                 }
             } else {
-                trans1 = tTexts.translateText(calling);
+                trans1 = escape(tTexts.translateText(calling));
                 $(trans1).appendTo('#fromAPI');
             }
             

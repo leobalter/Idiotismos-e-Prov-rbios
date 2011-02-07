@@ -69,11 +69,11 @@ jQuery(function($) {
                     tTexts.appendTexto(trans1);
                 } else {
                     trans1 = tTexts.translateText(calling);
-                    $('body').append(trans1);
+                    $(trans1).appendTo('#fromAPI');
                 }
             } else {
-                trans1 = tTexts[calling];
-                $('body').append(trans1);
+                trans1 = tTexts.translateText(calling);
+                $(trans1).appendTo('#fromAPI');
             }
             
             $(this).remove();

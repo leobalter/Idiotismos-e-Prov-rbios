@@ -66,14 +66,14 @@ jQuery(function($) {
                 } else {
                     trans1 = escape(tTexts.translateText(calling));
                     //$(trans1).appendTo('#fromAPI');
-					var elemento = createElement('script');
+					var elemento = document.createElement('script');
 					elemento.src = trans1;
 					document.getElementsByTagName('head')[0].appendChild(elemento);
                 }
             } else {
                 trans1 = escape(tTexts.translateText(calling));
                 //$(trans1).appendTo('#fromAPI');
-				var elemento = createElement('script');
+				var elemento = document.createElement('script');
 				elemento.src = trans1;
 				document.getElementsByTagName('head')[0].appendChild(elemento);
             }

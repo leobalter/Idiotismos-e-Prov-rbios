@@ -66,16 +66,19 @@
                 {% endif %}
             </section>
             
-            <section id="share">
+            <nav id="share">
                 <ul class="clearfix">
-                    <li>
+                    <li><a href="/frases/{{ frase.id }}" class="linkButton">Link</a></li>
+					<li><a href="http://www.iloop.com.br/frases" class="linkButton">listar frases</a></li>
+					<li>
                         <a href="http://twitter.com/share" class="twitter-share-button" data-text="{{ frase.translated }}" data-count="horizontal" data-via="idiotismos">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
                     </li>
                     <li>
                         <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="http://www.iloop.com.br" layout="button_count" show_faces="true" width="100"></fb:like>
                     </li>
                 </ul>
-            </section>    
+            </nav>    
+
         {% endblock %}
     </div>
     
@@ -84,28 +87,9 @@
 	        <section id="about">
 	            <h2>O que é tudo isso?</h2>
 	            <p>Esse site traz aleatóriamente algumas frases do livro "<a href="http://pt.wikipedia.org/wiki/English_As_She_Is_Spoke" rel="nofollow" title="Wikipedia sobre o livro 'English as she is spoke'">English as she is Spoke</a>" de domínio público. Divirta-se.</p>
-	            <p>Divertidamente criado em Django</p>
 	        </section>
 
-			<section class="hCard" 
-				itemtype="http://microformats.org/profile/hcard" itemscope>
-				<h3 itemprop="fn">Leonardo Balter</h3>
-				<p itemprop="title">Desenvolvedor Web</p>
-				<p itemprop="email">leo@balter.com.br<p>
-				<div itemprop="adr" itemscope>
-					<p itemprop="locality">Rio de Janeiro</p>
-				</div>
-				<nav>
-                    <h4>Pela web:</h4>
-                    <ul class="linear clearfix">
-                        <li><a href="http://www.iloop.com.br/" itemprop="url">esse site</a></li>
-                        <li><a href="http://leobalter.net" itemprop="url">blog técnico</a></li>
-                        <li><a href="http://www.desconferencia.com.br" itemprop="url">blog de idéias</a></li>
-                        <li><a href="http://twitter.com/leobalter" itemprop="url">twitter</a></li>
-                        <li><a href="http://facebook.com/leonardo.balter" itemprop="url">facebook</a></li>
-                    </ul>
-				</nav>
-			</section>
+			{% include 'hcard.html' %}
 	    </footer>
 	{% endblock %}
   </div> <!-- end of #container -->

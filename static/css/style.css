@@ -152,7 +152,7 @@ ul.linear {
 
 ul.linear li {
 	float: left;
-	padding: 6px;
+	margin-top: 6px;
 }
 
 #main h3 {
@@ -175,6 +175,64 @@ ul.linear li {
 
 #share li {
     float:left;
+}
+
+#facebookTop {
+	position: absolute;
+	top: 24px;
+	right: 10px;
+}
+
+article {
+	border-bottom: 1px solid #eee;
+	margin-bottom: 22px;
+	padding-bottom: 20px;
+}
+
+.pagination {
+	height: 40px;
+	line-height: 40px;
+	position: relative;
+}
+
+.pagePrev {
+	position: absolute;
+	left: 10px;
+	top: 0;
+}
+
+.pageNext {
+	position: absolute;
+	right: 10px;
+	top: 0;
+}
+
+.pagination .current {
+	display: block;
+	text-align: center;
+	margin: 0 auto;
+	width: 300px;
+}
+
+.linkButton, .linkButton:active, .linkButton:visited {
+	display: inline-block;
+	line-height: 20px;
+	padding: 0 14px;
+	border: 1px solid #EEE;
+	background: #146387;
+	color: #FFF;
+	font-size: 10px;
+	text-decoration: none;
+	margin-right: 20px;
+}
+
+.linkButton:hover {
+	text-decoration: underline;
+	color: #FFF;
+}
+
+#navtop {
+	margin-bottom: 6px;
 }
 
 @media all and (orientation:portrait) { 
@@ -204,6 +262,6 @@ ul.linear li {
   p, h2, h3 { orphans: 3; widows: 3; }
   h2, h3{ page-break-after: avoid; }
   
-  #share { display: none }
+  #share, #facebookTop, .pagination { display: none }
 }
 

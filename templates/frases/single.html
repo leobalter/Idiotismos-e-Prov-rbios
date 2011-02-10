@@ -1,0 +1,48 @@
+{% extends 'index.html' %}
+
+	{% block main %}
+		<nav id="navtop">
+			<a href="http://www.iloop.com.br/" class="linkButton">Home</a>
+		</nav>
+		<h2>Frase {{ frase.id }}</h2>
+
+		<section class="fromServer" data-id="{{ frase.id }}">
+            <h3>A frase:</h3>
+            <p class="phrase original">{{ frase.original }}</p>
+           
+            <h3>A tradução:</h3>
+            <p class="phrase translated">{{ frase.translated }}</p>
+        </section>
+                  
+        <section class="fromAPI">
+            {% if frase.api_original %}
+            <h3>A frase original via Google Translate:</h3>
+            <p>{{ frase.api_original }}</p>
+            {% endif %}
+           
+            {% if frase.api_translated %}               
+            <h3>A frase em inglês de volta ao português via Google Translate:</h3>
+            <p>{{ frase.api_translated }}</p>
+            {% endif %}
+        </section>
+       
+        <nav id="share">
+            <ul class="clearfix">
+				<li><a href="http://www.iloop.com.br/frases" class="linkButton">listar frases</a></li>
+                <li>
+                    <a href="http://twitter.com/share" class="twitter-share-button" data-text="{{ frase.translated }}" data-count="horizontal" data-via="idiotismos">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+                </li>
+				<li>
+					<script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="http://www.iloop.com.br" layout="button_count" show_faces="true" width="100"></fb:like>
+				</li>
+            </ul>
+        </nav>
+
+	
+	{% endblock %}
+	
+	{% block footer %}
+	    <footer class="main">
+			{% include 'hcard.html' %}
+	    </footer>
+	{% endblock %}

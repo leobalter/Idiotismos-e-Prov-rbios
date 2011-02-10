@@ -1,0 +1,13 @@
+	<nav class="pagination">
+        {% if frases.has_previous %}
+            <a  class="pagePrev" href="/frases/pagina/{{ frases.previous_page_number }}">&laquo; Página anterior</a>
+        {% endif %}
+
+        <span class="current">
+            Página {{ frases.number }} de {{ frases.paginator.num_pages }}
+        </span>
+
+        {% if frases.has_next %}
+            <a class="pageNext" href="/frases/pagina/{{ frases.next_page_number }}">Próxima página &raquo;</a>
+        {% endif %}
+	</nav>
